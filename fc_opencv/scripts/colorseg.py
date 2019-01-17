@@ -2,7 +2,7 @@
 from __future__ import print_function
 
 import roslib
-roslib.load_manifest('fc_colorsegmentation')
+roslib.load_manifest('fc_opencv')
 import sys
 import rospy
 import cv2
@@ -27,17 +27,17 @@ class image_converter:
       print(e)
 
     # Convert BGR to HSV
-    hsv = cv.cvtColor(cv_image, cv.COLOR_BGR2HSV)
+    hsv = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
 
     # define range of the color we look for in the HSV space
     lower = np.array([0,0,250])
     upper = np.array([255,5,255])
 
     # Threshold the HSV image to get only the pixels in ranage
-    mask = cv.inRange(hsv, lower, upper)
+    mask = cv2.inRange(hsv, lower, upper)
 
     # Bitwise-AND mask and original image
-    res = cv.bitwise_and(cv_image, cv_image, mask= mask)
+    res = cv2.bitwise_and(cv_image, cv_image, mask= mask)
 
     # Publish the image
     try:

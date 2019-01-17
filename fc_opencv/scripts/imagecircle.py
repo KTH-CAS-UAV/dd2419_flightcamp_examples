@@ -2,7 +2,7 @@
 from __future__ import print_function
 
 import roslib
-roslib.load_manifest('fc_colorsegmentation')
+roslib.load_manifest('fc_opencv')
 import sys
 import rospy
 import cv2
@@ -39,7 +39,7 @@ class image_converter:
       print(e)
 
 def main(args):
-  rospy.init_node('colorseg', anonymous=True)
+  rospy.init_node('imagecircle', anonymous=True)
 
   ic = image_converter()
 
