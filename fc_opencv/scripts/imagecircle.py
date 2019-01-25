@@ -16,7 +16,7 @@ class image_converter:
     self.image_pub = rospy.Publisher("/myresult", Image, queue_size=2)
 
     self.bridge = CvBridge()
-    self.image_sub = rospy.Subscriber("/cf1/camera_camera/image_raw", Image, self.callback)
+    self.image_sub = rospy.Subscriber("/cf1/camera/image_raw", Image, self.callback)
 
   def callback(self,data):
     # Convert the image from OpenCV to ROS format
